@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Билеты ПДД</string>
+    <string name="start">Билеты</string>
+    <string name="stat">Статистика</string>
+    <string name="options">Настройки</string>
+    <string name="back">Назад</string>
+    <string name="tickets">Билет №</string>
+    <string name="ticket1">Билет №1 </string>
+    <string name="image_description">Изображения для текущего билета</string>
+    <string name="question">Вопрос</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
