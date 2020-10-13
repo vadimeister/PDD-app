@@ -3,12 +3,15 @@
     <string name="start">Билеты</string>
     <string name="stat">Статистика</string>
     <string name="options">Настройки</string>
+    <string name="result">Результат</string>
     <string name="back">Назад</string>
     <string name="tickets">Билет №</string>
     <string name="ticket1">Билет №1 </string>
     <string name="image_description">Изображения для текущего билета</string>
     <string name="question">Вопрос</string>
-
+    <string name="q11"> Остановившись непосредственно перед пешеходным переходом, чтобы уступить дорогу пешеходу.</string>
+    <string name="q12">Остановившись на проезжей части из-за технической неисправности транспортного средства</string>
+    <string name="q13">В обоих перечисленных случаях</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

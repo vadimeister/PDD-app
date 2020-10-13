@@ -31,8 +31,7 @@
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/lineQuestions"
@@ -50,8 +49,8 @@
             android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="шгшһг"
-            android:textSize="25sp" />
+            android:textColor="@color/white"
+            android:textSize="20sp" />
     </LinearLayout>
 
         <LinearLayout
@@ -72,9 +71,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/background_answer_selector"
-                android:text="f"
+                android:padding="5dp"
                 android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/answer2"
@@ -82,8 +81,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/background_answer_selector"
+                android:padding="5dp"
                 android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/answer3"
@@ -91,19 +91,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/background_answer_selector"
-                android:text="f"
+                android:padding="5dp"
                 android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/answer4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/background_answer_selector"
-                android:text="f"
-                android:textColor="@color/white"
-                android:textSize="25sp" />
         </LinearLayout>
     </LinearLayout>
 

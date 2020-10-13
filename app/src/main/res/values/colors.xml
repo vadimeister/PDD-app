@@ -8,5 +8,7 @@
     <color name="blue">#48d1ff</color>
     <color name="darkBlue">#24303C</color>
     <color name="gray">#616060</color>
+    <color name="correctAnswer">#469C45</color>
+    <color name="wrongAnswer">#F85B5B</color>
 </resources>
 
