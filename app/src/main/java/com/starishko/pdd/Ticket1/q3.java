@@ -51,11 +51,15 @@ public class q3 extends Fragment  implements  View.OnClickListener{
         View view =
                 inflater.inflate(R.layout.ticket1_q3, container, false);
         Objects.requireNonNull(getActivity()).findViewById(R.id.text_square3).setBackgroundResource(R.drawable.now);
+        Bundle args = getArguments();
+        int n = 0;
+        if(args != null)
+            n = getArguments().getInt("number");
         answer1 = view.findViewById(R.id.answer1);
         answer2 = view.findViewById(R.id.answer2);
         answer3 =  view.findViewById(R.id.answer3);
         String[] answers = getResources().getStringArray(R.array.q3Answers);
-        answer1.setText(answers[0]);
+        answer1.setText(String.valueOf(n));
         answer2.setText(answers[1]);
         answer3.setText(answers[2]);
         TextView question = view.findViewById(R.id.question);

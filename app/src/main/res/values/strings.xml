@@ -14,4 +14,5 @@
     <string name="q13">В обоих перечисленных случаях</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="_1">1</string>
 </resources>

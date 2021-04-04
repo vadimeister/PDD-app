@@ -37,6 +37,7 @@ public class q4 extends Fragment implements  View.OnClickListener{
             activity=(Activity) context;
         }
     }
+    public int numberTicket;
     private String correctAnswer;
     private TextView answer1;
     private TextView answer2;
@@ -51,6 +52,9 @@ public class q4 extends Fragment implements  View.OnClickListener{
         View view =
                 inflater.inflate(R.layout.ticket1_q4, container, false);
         Objects.requireNonNull(getActivity()).findViewById(R.id.text_square4).setBackgroundResource(R.drawable.now);
+        Bundle args = getArguments();
+        if(args != null)
+            numberTicket = getArguments().getInt("number");
         answer1 =  view.findViewById(R.id.answer1);
         answer2 =  view.findViewById(R.id.answer2);
         answer3 =  view.findViewById(R.id.answer3);

@@ -5,7 +5,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context="com.starishko.pdd.Ticket1.q1">
+tools:context="com.starishko.pdd.Question">
 
     <ScrollView
         android:id="@+id/ScrollQ"
@@ -97,6 +97,22 @@ tools:context="com.starishko.pdd.Ticket1.q1">
                     android:padding="5dp"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/answer4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/background_answer_selector"
+                    android:onClick="onClick"
+                    android:padding="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/Correct_answer_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible" />
 
             </LinearLayout>
 
