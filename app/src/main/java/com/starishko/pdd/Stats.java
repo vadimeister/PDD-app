@@ -33,7 +33,7 @@ public class Stats extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stats);
         goodQuestions=0;
-        for (int j = 0; j<40; j++ ) {
+        for (int j = 0; j<40; j++) {
             goodQuestions = goodQuestions + Integer.parseInt(MainActivity.pref.getString("ResultQuestions" +j, "0"));;
         }
 
