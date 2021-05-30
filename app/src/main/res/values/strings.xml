@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Билеты ПДД</string>
     <string name="start">Билеты</string>
+    <string name="rule">Правила</string>
     <string name="stat">Статистика</string>
     <string name="options">Настройки</string>
     <string name="result">Результат</string>

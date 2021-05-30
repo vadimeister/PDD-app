@@ -32,6 +32,24 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".RulesList">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TicketsList">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Rule">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".Settings">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />

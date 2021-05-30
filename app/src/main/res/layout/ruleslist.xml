@@ -50,47 +50,26 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/options"
+            android:text="@string/rule"
             android:textColor="@color/white"
             android:textSize="28sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/statButton"
-        android:layout_width="245dp"
-        android:layout_height="67dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="175dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/button_main"
-        android:text="Сброс статистики"
-        android:textColor="@drawable/text_color_selector"
-        android:textSize="21sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/container3" />
-
-
-
-    <TextView
-        android:id="@+id/textVersion"
-        android:layout_width="245dp"
-        android:layout_height="66dp"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="32dp"
-        android:textColor="@color/gray"
-        android:textSize="21sp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rulesList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scrollbarSize="5dp"
+        android:scrollbarThumbVertical="@drawable/style_answer_press"
+        android:scrollbars="vertical"
+        android:verticalScrollbarPosition="right"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statButton"
-        android:text="Версия 0.0.1 \nот 8 мая 2020 г." />
+        app:layout_constraintTop_toBottomOf="@+id/container3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

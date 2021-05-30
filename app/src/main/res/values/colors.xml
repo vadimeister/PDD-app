@@ -11,5 +11,8 @@
     <color name="correctAnswer">#469C45</color>
     <color name="corectAnswer">#469C45</color>
     <color name="wrongAnswer">#F85B5B</color>
+    <color name="nopass">#068BFF</color>
+    <color name="progressGo">#0073D8</color>
+    <color name="progressBackground">#63666A</color>
 </resources>
 
