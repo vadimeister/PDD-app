@@ -35,15 +35,15 @@
         <Button
             android:id="@+id/button_back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/button_main"
             android:text="@string/back"
             android:textAllCaps="false"
             android:textColor="@drawable/text_color_selector"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -58,11 +58,10 @@
             android:layout_marginBottom="8dp"
             android:text="@string/tickets"
             android:textColor="@color/white"
-            android:textSize="28sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
