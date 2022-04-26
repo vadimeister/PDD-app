@@ -59,6 +59,15 @@ class MainMenu : AppCompatActivity() {
             } catch (ignored: Exception) {
             }
         }
+        val examButton = findViewById<View>(R.id.examButton) as Button
+        examButton.setOnClickListener {
+            try {
+                val intent = Intent(this@MainMenu, Exam::class.java)
+                startActivity(intent)
+                finish()
+            } catch (ignored: Exception) {
+            }
+        }
         val rulesButton = findViewById<View>(R.id.ruleButton) as Button
         rulesButton.setOnClickListener {
             try {

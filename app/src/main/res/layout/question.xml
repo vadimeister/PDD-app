@@ -78,7 +78,8 @@ tools:context="com.starishko.pdd.Question">
                     android:onClick="onClick"
                     android:padding="5dp"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
                     android:id="@+id/answer2"
@@ -100,7 +101,8 @@ tools:context="com.starishko.pdd.Question">
                     android:onClick="onClick"
                     android:padding="5dp"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
                 <TextView
                     android:id="@+id/answer4"
                     android:layout_width="match_parent"

@@ -8,14 +8,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import android.content.Intent
-import com.starishko.pdd.RulesList
 import android.annotation.SuppressLint
-import com.starishko.pdd.TicketsList
-import android.content.SharedPreferences
-import androidx.fragment.app.FragmentActivity
-import com.starishko.pdd.Question.Postman
-import com.starishko.pdd.Question
 import android.app.Activity
 import android.content.Context
 import androidx.annotation.RequiresApi
@@ -29,33 +22,16 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.tasks.OnSuccessListener
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import com.google.android.gms.tasks.OnFailureListener
-import com.starishko.pdd.DialogClearSettings
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.starishko.pdd.RulesAdapter
-import androidx.recyclerview.widget.GridLayoutManager
-import com.starishko.pdd.TicketsAdapter
-import com.starishko.pdd.RulesAdapter.RulesViewHolder
-import com.starishko.pdd.TicketsAdapter.TicketsViewHolder
-import androidx.appcompat.app.AppCompatDialogFragment
-import android.content.DialogInterface
-import android.icu.number.NumberRangeFormatter.with
 import android.view.View
 import android.widget.*
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.GenericTransitionOptions.with
-import com.bumptech.glide.Glide
-import com.bumptech.glide.Glide.with
-import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions.with
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.with
 import com.squareup.picasso.Picasso
 import java.io.File
 import java.io.IOException
 import java.lang.ClassCastException
 import java.util.*
 
-class Question : Fragment(), View.OnClickListener {
+class ExamQuestion : Fragment(), View.OnClickListener {
     interface Postman {
         fun fragmentMail(numberOfCorrect: Int)
     }
@@ -76,7 +52,6 @@ class Question : Fragment(), View.OnClickListener {
     private var answer4: TextView? = null
     private var answer_correct_id: TextView? = null
     private var question: TextView? = null
-    private val numberTicket = 0
     private var value1: String? = null
     private var value2: String? = null
     private var value3: String? = null
@@ -95,10 +70,8 @@ class Question : Fragment(), View.OnClickListener {
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.question, container, false)
-        val text_numberOfTicket = requireActivity().findViewById<TextView>(R.id.text_numberOfTicket)
-        val stringNumberOfTicket = text_numberOfTicket.text.toString()
-        val numberTicket = stringNumberOfTicket.substring(7).toInt()
         val args = arguments
+        val numberTicket: Int = args?.getInt("numberTicket") ?: forFirstQuestion()
         val numberQuestion: Int = args?.getInt("numberQuestion") ?: 1
         chooseTextSquare(numberQuestion)
         textSquare!!.setBackgroundResource(R.drawable.now)
@@ -177,6 +150,13 @@ class Question : Fragment(), View.OnClickListener {
         return view
     }
 
+    private fun forFirstQuestion(): Int {
+        val textnumberForFirstQuestion= requireActivity().findViewById<TextView>(R.id.hidden)
+        val stringForFirstQuestion = textnumberForFirstQuestion.text.toString()
+        val numberTicket = stringForFirstQuestion.substring(0).toInt()
+        return numberTicket
+    }
+
     @SuppressLint("UseRequireInsteadOfGet")
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     override fun onDetach() {
@@ -205,18 +185,15 @@ class Question : Fragment(), View.OnClickListener {
         when (view.id) {
             R.id.answer1 -> {
                 answerGiven = answer1!!.text
+                answer1!!.setBackgroundResource(R.color.answerExam)
+                textSquare!!.setBackgroundResource(R.color.answerExam)
                 if (answerGiven === correctAnswer) { //да - это верный ответ
-                    answer1!!.setBackgroundResource(R.color.correctAnswer)
-                    textSquare!!.setBackgroundResource(R.color.correctAnswer)
                     counter++
                     try {
                         (activity as Postman?)!!.fragmentMail(counter)
                     } catch (ignored: ClassCastException) {
                     }
                 } else {
-                    answer1!!.setBackgroundResource(R.color.wrongAnswer)
-                    buttonCorrectAnswer!!.setBackgroundResource(R.color.correctAnswer)
-                    textSquare!!.setBackgroundResource(R.color.wrongAnswer)
                     try {
                         (activity as Postman?)!!.fragmentMail(counter)
                     } catch (ignored: ClassCastException) {
@@ -226,18 +203,15 @@ class Question : Fragment(), View.OnClickListener {
             }
             R.id.answer2 -> {
                 answerGiven = answer2!!.text
+                answer2!!.setBackgroundResource(R.color.answerExam)
+                textSquare!!.setBackgroundResource(R.color.answerExam)
                 if (answerGiven === correctAnswer) { //да - это верный ответ
-                    answer2!!.setBackgroundResource(R.color.correctAnswer)
-                    textSquare!!.setBackgroundResource(R.color.correctAnswer)
                     counter++
                     try {
                         (activity as Postman?)!!.fragmentMail(counter)
                     } catch (ignored: ClassCastException) {
                     }
                 } else {
-                    answer2!!.setBackgroundResource(R.color.wrongAnswer)
-                    buttonCorrectAnswer!!.setBackgroundResource(R.color.correctAnswer)
-                    textSquare!!.setBackgroundResource(R.color.wrongAnswer)
                     try {
                         (activity as Postman?)!!.fragmentMail(counter)
                     } catch (ignored: ClassCastException) {
@@ -247,18 +221,15 @@ class Question : Fragment(), View.OnClickListener {
             }
             R.id.answer3 -> {
                 answerGiven = answer3!!.text
+                answer3!!.setBackgroundResource(R.color.answerExam)
+                textSquare!!.setBackgroundResource(R.color.answerExam)
                 if (answerGiven === correctAnswer) { //да - это верный ответ
-                    answer3!!.setBackgroundResource(R.color.correctAnswer)
-                    textSquare!!.setBackgroundResource(R.color.correctAnswer)
                     counter++
                     try {
                         (activity as Postman?)!!.fragmentMail(counter)
                     } catch (ignored: ClassCastException) {
                     }
                 } else {
-                    answer3!!.setBackgroundResource(R.color.wrongAnswer)
-                    buttonCorrectAnswer!!.setBackgroundResource(R.color.correctAnswer)
-                    textSquare!!.setBackgroundResource(R.color.wrongAnswer)
                     try {
                         (activity as Postman?)!!.fragmentMail(counter)
                     } catch (ignored: ClassCastException) {
@@ -269,18 +240,15 @@ class Question : Fragment(), View.OnClickListener {
             R.id.answer4 -> {
                 //то же самое, что и предыдущий case, только используем следующую кнопку
                 answerGiven = answer4!!.text
+                answer4!!.setBackgroundResource(R.color.answerExam)
+                textSquare!!.setBackgroundResource(R.color.answerExam)
                 if (answerGiven === correctAnswer) { //да - это верный ответ
-                    answer4!!.setBackgroundResource(R.color.correctAnswer)
-                    textSquare!!.setBackgroundResource(R.color.correctAnswer)
                     counter++
                     try {
                         (activity as Postman?)!!.fragmentMail(counter)
                     } catch (ignored: ClassCastException) {
                     }
                 } else { //нет, неверно!
-                    answer4!!.setBackgroundResource(R.color.wrongAnswer)
-                    buttonCorrectAnswer!!.setBackgroundResource(R.color.correctAnswer)
-                    textSquare!!.setBackgroundResource(R.color.wrongAnswer)
                     try {
                         (activity as Postman?)!!.fragmentMail(counter)
                     } catch (ignored: ClassCastException) {
