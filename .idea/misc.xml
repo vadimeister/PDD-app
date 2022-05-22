@@ -3,13 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MyApps/PddKotlin/app/src/main/res/drawable/background_answer_selector.xml" value="0.21458333333333332" />
+        <entry key="..\:/MyApps/PddKotlin/app/src/main/res/drawable/background_tip_selector.xml" value="0.21458333333333332" />
         <entry key="..\:/MyApps/PddKotlin/app/src/main/res/drawable/button_email.xml" value="0.3828125" />
         <entry key="..\:/MyApps/PddKotlin/app/src/main/res/drawable/button_main.xml" value="0.3828125" />
         <entry key="..\:/MyApps/PddKotlin/app/src/main/res/drawable/button_password.xml" value="0.3828125" />
+        <entry key="..\:/MyApps/PddKotlin/app/src/main/res/drawable/style_answer_press.xml" value="0.21458333333333332" />
         <entry key="..\:/MyApps/PddKotlin/app/src/main/res/drawable/style_button_nopress.xml" value="0.3828125" />
+        <entry key="..\:/MyApps/PddKotlin/app/src/main/res/drawable/style_tip_nopress.xml" value="0.21458333333333332" />
+        <entry key="..\:/MyApps/PddKotlin/app/src/main/res/drawable/style_tip_press.xml" value="0.21458333333333332" />
         <entry key="..\:/MyApps/PddKotlin/app/src/main/res/layout/activity_email_password.xml" value="0.22" />
         <entry key="..\:/MyApps/PddKotlin/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/MyApps/PddKotlin/app/src/main/res/layout/exam.xml" value="0.255050505050505" />
+        <entry key="..\:/MyApps/PddKotlin/app/src/main/res/layout/info.xml" value="0.22" />
         <entry key="..\:/MyApps/PddKotlin/app/src/main/res/layout/number_list_rule.xml" value="0.2921195652173913" />
         <entry key="..\:/MyApps/PddKotlin/app/src/main/res/layout/number_list_ticket.xml" value="0.2921195652173913" />
         <entry key="..\:/MyApps/PddKotlin/app/src/main/res/layout/question.xml" value="0.20520833333333333" />

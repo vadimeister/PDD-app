@@ -97,12 +97,12 @@
                 android:textSize="28sp" />
 
             <Button
-                android:id="@+id/statButton"
+                android:id="@+id/infoButton"
                 android:layout_width="224dp"
                 android:layout_height="67dp"
                 android:layout_margin="20dp"
                 android:background="@drawable/button_main"
-                android:text="@string/stat"
+                android:text="Информация"
                 android:textColor="@drawable/text_color_selector"
                 android:textSize="28sp" />
 

@@ -22,6 +22,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.tasks.OnSuccessListener
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.view.Gravity
 import android.view.View
 import android.widget.*
 import androidx.fragment.app.Fragment
@@ -33,10 +34,12 @@ import java.util.*
 
 class ExamQuestion : Fragment(), View.OnClickListener {
     interface Postman {
-        fun fragmentMail(numberOfCorrect: Int)
+        fun fragmentMail(numberOfCorrect: Int, numberQuestion: Int)
     }
 
     var counter = 0
+    var numberQuestion = 0
+    var numberQuestion_ = 0
     var activity: Activity? = null
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -56,12 +59,15 @@ class ExamQuestion : Fragment(), View.OnClickListener {
     private var value2: String? = null
     private var value3: String? = null
     private var value4: String? = null
+    private var tip: TextView? = null
+    private var valueTip: String? = null
     private var textSquare: TextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     private var buttonCorrectAnswer: TextView? = null
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -72,9 +78,18 @@ class ExamQuestion : Fragment(), View.OnClickListener {
         val view = inflater.inflate(R.layout.question, container, false)
         val args = arguments
         val numberTicket: Int = args?.getInt("numberTicket") ?: forFirstQuestion()
-        val numberQuestion: Int = args?.getInt("numberQuestion") ?: 1
+        numberQuestion = args?.getInt("numberQuestion") ?: 1
         chooseTextSquare(numberQuestion)
         textSquare!!.setBackgroundResource(R.drawable.now)
+
+        numberQuestion_ = numberQuestion
+        if (numberQuestion in 21..25) {
+            numberQuestion = args?.getInt("firstWrongQuestion") ?: 1
+        }
+        if (numberQuestion in 26..30) {
+            numberQuestion= args?.getInt("secondWrongQuestion") ?: 1
+        }
+        tip = view.findViewById(R.id.tip)
         answer1 = view.findViewById(R.id.answer1)
         answer2 = view.findViewById(R.id.answer2)
         answer3 = view.findViewById(R.id.answer3)
@@ -97,7 +112,6 @@ class ExamQuestion : Fragment(), View.OnClickListener {
         GlideApp.with(requireContext())
             .load(islandRef)
             .into(Image)
-
 
 
         //showImage(islandRef, Image, photoNumberQuestion)
@@ -143,6 +157,20 @@ class ExamQuestion : Fragment(), View.OnClickListener {
 
             override fun onCancelled(error: DatabaseError) {}
         })
+
+
+        tip!!.setOnClickListener {
+            val myRefTip= database.child("Tickets").child(numberTicket.toString())
+                .child(numberQuestion.toString())
+            myRefTip.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    valueTip = dataSnapshot.child("answer_tip").getValue(String::class.java)
+                    tip!!.text = valueTip
+                    tip!!.gravity = Gravity.NO_GRAVITY
+                }
+                override fun onCancelled(error: DatabaseError) {}
+            })
+        }
         answer1!!.setOnClickListener(this)
         answer2!!.setOnClickListener(this)
         answer3!!.setOnClickListener(this)
@@ -151,7 +179,7 @@ class ExamQuestion : Fragment(), View.OnClickListener {
     }
 
     private fun forFirstQuestion(): Int {
-        val textnumberForFirstQuestion= requireActivity().findViewById<TextView>(R.id.hidden)
+        val textnumberForFirstQuestion = requireActivity().findViewById<TextView>(R.id.hidden)
         val stringForFirstQuestion = textnumberForFirstQuestion.text.toString()
         val numberTicket = stringForFirstQuestion.substring(0).toInt()
         return numberTicket
@@ -190,12 +218,12 @@ class ExamQuestion : Fragment(), View.OnClickListener {
                 if (answerGiven === correctAnswer) { //да - это верный ответ
                     counter++
                     try {
-                        (activity as Postman?)!!.fragmentMail(counter)
+                        (activity as Postman?)!!.fragmentMail(counter, numberQuestion_)
                     } catch (ignored: ClassCastException) {
                     }
                 } else {
                     try {
-                        (activity as Postman?)!!.fragmentMail(counter)
+                        (activity as Postman?)!!.fragmentMail(counter, numberQuestion_)
                     } catch (ignored: ClassCastException) {
                     }
                 }
@@ -208,12 +236,12 @@ class ExamQuestion : Fragment(), View.OnClickListener {
                 if (answerGiven === correctAnswer) { //да - это верный ответ
                     counter++
                     try {
-                        (activity as Postman?)!!.fragmentMail(counter)
+                        (activity as Postman?)!!.fragmentMail(counter,numberQuestion_)
                     } catch (ignored: ClassCastException) {
                     }
                 } else {
                     try {
-                        (activity as Postman?)!!.fragmentMail(counter)
+                        (activity as Postman?)!!.fragmentMail(counter,numberQuestion_)
                     } catch (ignored: ClassCastException) {
                     }
                 }
@@ -226,12 +254,12 @@ class ExamQuestion : Fragment(), View.OnClickListener {
                 if (answerGiven === correctAnswer) { //да - это верный ответ
                     counter++
                     try {
-                        (activity as Postman?)!!.fragmentMail(counter)
+                        (activity as Postman?)!!.fragmentMail(counter,numberQuestion_)
                     } catch (ignored: ClassCastException) {
                     }
                 } else {
                     try {
-                        (activity as Postman?)!!.fragmentMail(counter)
+                        (activity as Postman?)!!.fragmentMail(counter,numberQuestion_)
                     } catch (ignored: ClassCastException) {
                     }
                 }
@@ -245,12 +273,12 @@ class ExamQuestion : Fragment(), View.OnClickListener {
                 if (answerGiven === correctAnswer) { //да - это верный ответ
                     counter++
                     try {
-                        (activity as Postman?)!!.fragmentMail(counter)
+                        (activity as Postman?)!!.fragmentMail(counter,numberQuestion_)
                     } catch (ignored: ClassCastException) {
                     }
                 } else { //нет, неверно!
                     try {
-                        (activity as Postman?)!!.fragmentMail(counter)
+                        (activity as Postman?)!!.fragmentMail(counter,numberQuestion_)
                     } catch (ignored: ClassCastException) {
                     }
                 }
@@ -316,15 +344,24 @@ class ExamQuestion : Fragment(), View.OnClickListener {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private fun chooseTextSquare(numberQuestion: Int) {
         when (numberQuestion) {
-            1 -> textSquare = Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square1)
-            2 -> textSquare = Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square2)
-            3 -> textSquare = Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square3)
-            4 -> textSquare = Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square4)
-            5 -> textSquare = Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square5)
-            6 -> textSquare = Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square6)
-            7 -> textSquare = Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square7)
-            8 -> textSquare = Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square8)
-            9 -> textSquare = Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square9)
+            1 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square1)
+            2 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square2)
+            3 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square3)
+            4 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square4)
+            5 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square5)
+            6 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square6)
+            7 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square7)
+            8 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square8)
+            9 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square9)
             10 -> textSquare =
                 Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square10)
             11 -> textSquare =
@@ -347,8 +384,28 @@ class ExamQuestion : Fragment(), View.OnClickListener {
                 Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square19)
             20 -> textSquare =
                 Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square20)
+            21 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square21)
+            22 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square22)
+            23 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square23)
+            24 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square24)
+            25 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square25)
+            26 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square26)
+            27 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square27)
+            28-> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square28)
+            29 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square29)
+            30 -> textSquare =
+                Objects.requireNonNull(getActivity())!!.findViewById(R.id.text_square30)
+
         }
     }
-
-    fun fragmentMail(counter: Int) {}
 }
+

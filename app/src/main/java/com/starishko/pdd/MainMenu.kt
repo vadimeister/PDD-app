@@ -48,8 +48,6 @@ class MainMenu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //database
-        //pref = getSharedPreferences("Data", MODE_PRIVATE)
         val startButton = findViewById<View>(R.id.startButton) as Button
         startButton.setOnClickListener {
             try {
@@ -77,10 +75,10 @@ class MainMenu : AppCompatActivity() {
             } catch (ignored: Exception) {
             }
         }
-        val statButton = findViewById<View>(R.id.statButton) as Button
-        statButton.setOnClickListener {
+        val infoButton = findViewById<View>(R.id.infoButton) as Button
+        infoButton.setOnClickListener {
             try {
-                val intent = Intent(this@MainMenu, Stats::class.java)
+                val intent = Intent(this@MainMenu, Info::class.java)
                 startActivity(intent)
                 finish()
             } catch (ignored: Exception) {

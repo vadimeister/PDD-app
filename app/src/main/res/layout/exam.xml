@@ -35,7 +35,7 @@
         <Button
             android:id="@+id/button_back"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="40dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="8dp"
@@ -48,6 +48,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="00:00"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/textExam"
+            app:layout_constraintStart_toEndOf="@id/button_back"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/hidden"
@@ -401,6 +419,160 @@
                 android:text="20"
                 android:textColor="@color/white"
                 android:textSize="25sp" />
+            <TextView
+                android:id="@+id/text_square21"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/square_tickets"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:onClick="Сhange"
+                android:padding="5dp"
+                android:text="21"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/text_square22"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/square_tickets"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:onClick="Сhange"
+                android:padding="5dp"
+                android:text="22"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/text_square23"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/square_tickets"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:onClick="Сhange"
+                android:padding="5dp"
+                android:text="23"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/text_square24"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/square_tickets"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:onClick="Сhange"
+                android:padding="5dp"
+                android:text="24"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/text_square25"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/square_tickets"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:onClick="Сhange"
+                android:padding="5dp"
+                android:text="25"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/text_square26"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/square_tickets"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:onClick="Сhange"
+                android:padding="5dp"
+                android:text="26"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/text_square27"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/square_tickets"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:onClick="Сhange"
+                android:padding="5dp"
+                android:text="27"
+                android:textColor="@color/white"
+                android:textSize="27sp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/text_square28"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/square_tickets"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:onClick="Сhange"
+                android:padding="5dp"
+                android:text="28"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/text_square29"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/square_tickets"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:onClick="Сhange"
+                android:padding="5dp"
+                android:text="29"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/text_square30"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/square_tickets"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:onClick="Сhange"
+                android:padding="5dp"
+                android:text="30"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:visibility="gone" />
+
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -413,7 +585,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/horizontalScrollView" />
+        app:layout_constraintTop_toBottomOf="@id/horizontalScrollView"
+        tools:layout="@layout/question" />
 
 
 

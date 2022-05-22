@@ -111,48 +111,13 @@ class TicketsAdapter internal constructor(numberOfItems: Int, parent: Context?) 
 
 
 
-                    /*if (correctCountAnswers == 20) {
-                        NumberTicket.setTextColor(parent!!.resources.getColor(R.color.correctAnswer))
-                        NumberTicket.text = "№ $numberTicket"
-                    } else if (correctCountAnswers== 0) {
-                        NumberTicket.setTextColor(parent!!.resources.getColor(R.color.white))
-                        NumberTicket.text = "№ $numberTicket"
-                    } else {
 
-                    }*/
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {}
             })
 
 
-
-
-
-            /*countGoodAnswers.setText(
-                Stats.getResultQuestions(numberTicket - 1).toString() + " из 20"
-            )
-            textQuest.text = "вопросов решено"
-            if (Stats.getResultQuestions(numberTicket - 1) == 20) {
-                resultTicket.text = "Билет пройден"
-                resultTicket.setTextColor(parent!!.resources.getColor(R.color.correctAnswer))
-            } else if (Stats.getResultQuestions(numberTicket - 1) == 0) {
-                resultTicket.text = "Билет не пройден"
-                resultTicket.setTextColor(parent!!.resources.getColor(R.color.white))
-            } else {
-                resultTicket.text = "Билет не пройден"
-                resultTicket.setTextColor(parent!!.resources.getColor(R.color.wrongAnswer))
-            }
-            if (Stats.getResultQuestions(numberTicket - 1) == 20) {
-                NumberTicket.setTextColor(parent!!.resources.getColor(R.color.correctAnswer))
-                NumberTicket.text = "№ $numberTicket"
-            } else if (Stats.getResultQuestions(numberTicket - 1) == 0) {
-                NumberTicket.setTextColor(parent!!.resources.getColor(R.color.white))
-                NumberTicket.text = "№ $numberTicket"
-            } else {
-                NumberTicket.setTextColor(parent!!.resources.getColor(R.color.wrongAnswer))
-                NumberTicket.text = "№ $numberTicket"
-            }*/
         }
 
         init {

@@ -62,16 +62,13 @@ class Result : AppCompatActivity() {
         val result = findViewById<TextView>(R.id.result)
         val database = FirebaseDatabase.getInstance().reference
         val currentUser= FirebaseAuth.getInstance().currentUser!!.uid
-        //setResultQuestions(numberTicket - 1, count)
         database.child("Users").child(currentUser).child("Stats").child("countCorrectAnswers").child(numberTicket.toString()).setValue(count)
 
         if (count == 20) {
             result.text = "Билет №$numberTicket Пройден:\n$count правильных ответов\n20 вопросов"
-            //setResultTickets(numberTicket - 1, 1)
 
         } else {
             result.text = "Билет №$numberTicket Не пройден:\n$count правильных ответов\n20 вопросов"
-            //setResultTickets(numberTicket - 1, 0)
         }
     }
 
@@ -82,19 +79,5 @@ class Result : AppCompatActivity() {
         finish()
     }
 
-    /*companion object {
-        fun setResultQuestions(i: Int, newValue: Int) {
-            val editor: SharedPreferences.Editor
-            editor = MainMenu.Companion.pref!!.edit()
-            editor.putString("ResultQuestions$i", newValue.toString())
-            editor.apply()
-        }
 
-        fun setResultTickets(i: Int, newValue: Int) {
-            val editor: SharedPreferences.Editor
-            editor = MainMenu.Companion.pref!!.edit()
-            editor.putString("ResultTickets$i", newValue.toString())
-            editor.apply()
-        }
-    }*/
 }

@@ -58,15 +58,50 @@ class ExamResult : AppCompatActivity() {
         }
         val arguments = intent.extras!!
         val count = arguments.getInt("goodAnswers")
+        var allAnswers = arguments.getInt("allAnswers")
+        var wrongCount = 0
         val result = findViewById<TextView>(R.id.result)
         val database = FirebaseDatabase.getInstance().reference
         val currentUser= FirebaseAuth.getInstance().currentUser!!.uid
 
-        if (count == 20) {
-            result.text = "Экзамен пройден:\n$count правильных ответов\n20 вопросов"
-        } else {
-            result.text = "Экзамен не пройден:\n$count правильных ответов\n20 вопросов"
+        if (allAnswers == 20) {
+            wrongCount = allAnswers - count
+            if (count == 20)
+                result.text = "Экзамен пройден:\n$wrongCount ошибок\n$allAnswers вопросов"
+            else
+                result.text = "Экзамен не пройден:\n$wrongCount ошибок\n$allAnswers вопросов"
         }
+        if (allAnswers == 25) {
+            wrongCount = allAnswers - count
+            if (count == 24)
+                result.text = "Экзамен пройден:\n$wrongCount ошибок\n$allAnswers вопросов"
+            else
+                result.text = "Экзамен не пройден:\n$wrongCount ошибок\n$allAnswers вопросов"
+        }
+        if (allAnswers == 30) {
+            wrongCount = allAnswers - count
+            if (count == 28)
+                result.text = "Экзамен пройден:\n$wrongCount ошибок\n$allAnswers вопросов"
+            else
+                result.text = "Экзамен не пройден:\n$wrongCount ошибок\n$allAnswers вопросов"
+        }
+        if (allAnswers < 20 ) {
+            allAnswers = 20
+            wrongCount = allAnswers - count
+            result.text = "Время вышло!\nЭкзамен не пройден:\n$wrongCount ошибок\n$allAnswers вопросов"
+        }
+        if (allAnswers in 21..24 ) {
+            allAnswers = 25
+            wrongCount = allAnswers - count
+            result.text = "Время вышло!\nЭкзамен не пройден:\n$wrongCount ошибок\n$allAnswers вопросов"
+        }
+        if (allAnswers in 26..29) {
+            allAnswers = 30
+            wrongCount = allAnswers - count
+            result.text = "Время вышло!\nЭкзамен не пройден:\n$wrongCount ошибок\n$allAnswers вопросов"
+        }
+
+
     }
 
     //Системная кнопка "назад"

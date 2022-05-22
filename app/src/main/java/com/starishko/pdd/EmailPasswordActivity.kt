@@ -94,16 +94,15 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener{
     }
 
 
-
     override fun onClick(view: View) {
         if (view.id == R.id.btn_sign_in) {
-            signin(ETemail!!.text.toString(), ETpassword!!.text.toString())
+            signIn(ETemail!!.text.toString(), ETpassword!!.text.toString())
         } else if (view.id == R.id.btn_registration) {
             registration(ETemail!!.text.toString(), ETpassword!!.text.toString())
         }
     }
 
-    fun signin(email: String?, password: String?) {
+    fun signIn(email: String?, password: String?) {
         mAuth!!.signInWithEmailAndPassword(email!!, password!!).addOnCompleteListener(
             this
         ) { task ->
@@ -117,8 +116,7 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener{
                     val intent = Intent(this@EmailPasswordActivity, MainMenu::class.java)
                     startActivity(intent)
                     finish()
-                } catch (ignored: Exception) {
-                }
+                } catch (ignored: Exception) { }
             } else Toast.makeText(
                 this@EmailPasswordActivity,
                 "Aвторизация провалена",
@@ -144,11 +142,7 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener{
                 for(i in 1..40){
                     numberTicket = i.toString()
                     database.child("Users").child(currentUser).child("Stats").child("countCorrectAnswers").child(numberTicket).setValue(0)
-
-                    // database.child("Users").child(currentUser).child("Stats").child("passedTickets").child(numberTicket).setValue(0)
                 }
-
-
 
             } else Toast.makeText(
                 this@EmailPasswordActivity,

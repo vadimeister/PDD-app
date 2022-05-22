@@ -49,6 +49,7 @@ import com.google.firebase.auth.FirebaseAuth
 class Settings : AppCompatActivity() {
     var ad: AlertDialog.Builder? = null
     var context: Context? = null
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings)
@@ -97,6 +98,11 @@ class Settings : AppCompatActivity() {
             //val transaction = manager.beginTransaction()
             //myDialogFragment.show(transaction, "dialog")
         }
+
+
+        val versionApp = findViewById<View>(R.id.textVersion) as TextView
+
+        versionApp.text = "Версия 0.1.1 \nот 18 мая 2022 г."
     }
 
     //Системная кнопка "назад"

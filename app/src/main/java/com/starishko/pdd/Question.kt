@@ -41,6 +41,7 @@ import com.starishko.pdd.TicketsAdapter.TicketsViewHolder
 import androidx.appcompat.app.AppCompatDialogFragment
 import android.content.DialogInterface
 import android.icu.number.NumberRangeFormatter.with
+import android.view.Gravity
 import android.view.View
 import android.widget.*
 import androidx.fragment.app.Fragment
@@ -53,6 +54,7 @@ import com.squareup.picasso.Picasso
 import java.io.File
 import java.io.IOException
 import java.lang.ClassCastException
+import java.lang.Exception
 import java.util.*
 
 class Question : Fragment(), View.OnClickListener {
@@ -76,12 +78,16 @@ class Question : Fragment(), View.OnClickListener {
     private var answer4: TextView? = null
     private var answer_correct_id: TextView? = null
     private var question: TextView? = null
-    private val numberTicket = 0
+    private var tip: TextView? = null
+    private var numberTicket = 0
+    private var numberQuestion = 0
     private var value1: String? = null
     private var value2: String? = null
     private var value3: String? = null
     private var value4: String? = null
+    private var valueTip: String? = null
     private var textSquare: TextView? = null
+    val database = FirebaseDatabase.getInstance().reference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -97,9 +103,9 @@ class Question : Fragment(), View.OnClickListener {
         val view = inflater.inflate(R.layout.question, container, false)
         val text_numberOfTicket = requireActivity().findViewById<TextView>(R.id.text_numberOfTicket)
         val stringNumberOfTicket = text_numberOfTicket.text.toString()
-        val numberTicket = stringNumberOfTicket.substring(7).toInt()
         val args = arguments
-        val numberQuestion: Int = args?.getInt("numberQuestion") ?: 1
+        numberTicket = stringNumberOfTicket.substring(7).toInt()
+        numberQuestion= args?.getInt("numberQuestion") ?: 1
         chooseTextSquare(numberQuestion)
         textSquare!!.setBackgroundResource(R.drawable.now)
         answer1 = view.findViewById(R.id.answer1)
@@ -107,8 +113,9 @@ class Question : Fragment(), View.OnClickListener {
         answer3 = view.findViewById(R.id.answer3)
         answer4 = view.findViewById(R.id.answer4)
         question = view.findViewById(R.id.question)
+        tip = view.findViewById(R.id.tip)
         val Image = view.findViewById<View>(R.id.ticketImageView) as ImageView
-        val database = FirebaseDatabase.getInstance().reference
+
         val myRefQuest = database.child("Tickets").child(numberTicket.toString())
             .child(numberQuestion.toString())
         val myRefAnswers = database.child("Tickets").child(numberTicket.toString())
@@ -170,6 +177,20 @@ class Question : Fragment(), View.OnClickListener {
 
             override fun onCancelled(error: DatabaseError) {}
         })
+        tip!!.setOnClickListener {
+                val myRefTip= database.child("Tickets").child(numberTicket.toString())
+                    .child(numberQuestion.toString())
+                myRefTip.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        valueTip = dataSnapshot.child("answer_tip").getValue(String::class.java)
+                        tip!!.text = valueTip
+                        tip!!.gravity = Gravity.NO_GRAVITY
+                    }
+                    override fun onCancelled(error: DatabaseError) {}
+                })
+        }
+
+
         answer1!!.setOnClickListener(this)
         answer2!!.setOnClickListener(this)
         answer3!!.setOnClickListener(this)
@@ -288,8 +309,15 @@ class Question : Fragment(), View.OnClickListener {
                 }
                 disableButtons()
             }
+
+
+
+
+
         }
     }
+
+
 
     private fun correct() {
         val correct = answer_correct_id!!.text.toString()

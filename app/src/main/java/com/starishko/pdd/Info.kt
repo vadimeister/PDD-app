@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentActivity
 import com.starishko.pdd.Question.Postman
 import com.starishko.pdd.Question
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import androidx.annotation.RequiresApi
 import android.os.Build
 import android.view.LayoutInflater
@@ -40,15 +41,16 @@ import com.starishko.pdd.RulesAdapter.RulesViewHolder
 import com.starishko.pdd.TicketsAdapter.TicketsViewHolder
 import androidx.appcompat.app.AppCompatDialogFragment
 import android.content.DialogInterface
+import android.net.Uri
 import android.view.View
 import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
 
-class Stats : AppCompatActivity() {
+class Info : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.stats)
+        setContentView(R.layout.info)
         val database = FirebaseDatabase.getInstance().reference
         val currentUser= FirebaseAuth.getInstance().currentUser!!.uid
         var correctQuestions = 0
@@ -61,13 +63,9 @@ class Stats : AppCompatActivity() {
                     val value = dataSnapshot.child(numberTicket.toString()).value as Long
                     countCorrectAnswers = value.toInt()
                     correctQuestions += countCorrectAnswers
-
                     if (countCorrectAnswers == 20)
                         correctTickets += 1
-
-
                 }
-
                 val textGoodQuestionsOfAll = findViewById<View>(R.id.textViewGoodOfALL) as TextView
                 textGoodQuestionsOfAll.text = "$correctQuestions/800"
                 val progressQuestions = findViewById<View>(R.id.progressBarQuestions) as ProgressBar
@@ -82,30 +80,47 @@ class Stats : AppCompatActivity() {
 
             override fun onCancelled(databaseError: DatabaseError) {}
         })
+        val buttonCheckAuto= findViewById<View>(R.id.checkAuto) as Button
+        buttonCheckAuto.setOnClickListener {
+            try{
+                val uri = Uri.parse("https://гибдд.рф/check/auto")
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            }
+            catch(e : ActivityNotFoundException){
+            }
 
-
-
-
-        /*goodQuestions = 0
-        for (j in 1..39) {
-            goodQuestions += MainMenu.pref!!.getString(
-                "ResultQuestions$j", "0"
-            )!!
-                .toInt()
         }
-        goodTickets = 0
-        for (j in 0..39) {
-            goodTickets += MainMenu
-                .pref!!.getString(
-                "ResultTickets$j", "0"
-            )!!
-                .toInt()
-        }*/
+        val buttonCheckFine= findViewById<View>(R.id.checkFine) as Button
+        buttonCheckFine.setOnClickListener {
+            try{
+                val uri = Uri.parse("https://гибдд.рф/check/fines")
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            }
+            catch(e : ActivityNotFoundException){
+            }
 
-        //кнопка "назад"
+        }
+        val buttonCheckDriver= findViewById<View>(R.id.checkDriver) as Button
+        buttonCheckDriver.setOnClickListener {
+            try{
+                val uri = Uri.parse("https://гибдд.рф/check/driver#+")
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            }
+            catch(e : ActivityNotFoundException){
+            }
+
+        }
+
+
+
+
+
         val button_back = findViewById<View>(R.id.button_back) as Button
         button_back.setOnClickListener {
-            val intent = Intent(this@Stats, MainMenu::class.java)
+            val intent = Intent(this@Info, MainMenu::class.java)
             startActivity(intent)
             finish()
         }
@@ -113,18 +128,10 @@ class Stats : AppCompatActivity() {
 
     //Системная кнопка "назад"
     override fun onBackPressed() {
-        val intent = Intent(this@Stats, MainMenu::class.java)
+        val intent = Intent(this@Info, MainMenu::class.java)
         startActivity(intent)
         finish()
     }
 
-    /*companion object {
-        private var goodQuestions = 0
-        private var goodTickets = 0
-        var ResultTickets = IntArray(40)
-        @SuppressLint("CommitPrefEdits")
-        fun getResultQuestions(i: Int): Int {
-            return MainMenu.pref!!.getString("ResultQuestions$i", "0")!!.toInt()
-        }
-    }*/
+
 }
