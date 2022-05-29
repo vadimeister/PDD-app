@@ -61,6 +61,7 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener{
     private var mAuthListener: AuthStateListener? = null
     private var ETemail: EditText? = null
     private var ETpassword: EditText? = null
+    var check = 0;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_email_password)
@@ -68,6 +69,9 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener{
         mAuthListener = AuthStateListener { firebaseAuth ->
             val user = firebaseAuth.currentUser
         }
+        val arguments = intent.extras
+        if(arguments!=null) 
+            check = arguments.getInt("Check");
         ETemail = findViewById<View>(R.id.et_email) as EditText
         ETpassword = findViewById<View>(R.id.et_password) as EditText
         findViewById<View>(R.id.btn_sign_in).setOnClickListener(this)
@@ -79,6 +83,7 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener{
         // Check if user is signed in (non-null) and update UI accordingly.
         val auth = Firebase.auth
         val currentUser = auth.currentUser
+
         if (currentUser!= null) {
             try {
 
@@ -89,7 +94,8 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener{
             } catch (ignored: Exception) {
             }
         } else {
-            FirebaseDatabase.getInstance().setPersistenceEnabled(true)
+            if (check == 0)
+                FirebaseDatabase.getInstance().setPersistenceEnabled(true)
         }
     }
 

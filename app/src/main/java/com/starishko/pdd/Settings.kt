@@ -75,6 +75,7 @@ class Settings : AppCompatActivity() {
         val message = "Вы уверены, что хотите выйти из аккаунта?"
         val button1String = "Да"
         val button2String = "Нет"
+        var check = 0;
         SignOut.setOnClickListener {
             val myDialogFragment = AlertDialog.Builder(this@Settings, R.style.AlertDialog)
             myDialogFragment.setTitle(title) // заголовок
@@ -83,6 +84,8 @@ class Settings : AppCompatActivity() {
                 FirebaseAuth.getInstance().signOut()
                 try {
                     val intent = Intent(this@Settings, EmailPasswordActivity::class.java)
+                    check = 1;
+                    intent.putExtra("Check", check)
                     startActivity(intent)
                 } catch (ignored: Exception) {
                 }
