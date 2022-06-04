@@ -70,7 +70,7 @@ class EmailPasswordActivity : AppCompatActivity(), View.OnClickListener{
             val user = firebaseAuth.currentUser
         }
         val arguments = intent.extras
-        if(arguments!=null) 
+        if(arguments!=null)
             check = arguments.getInt("Check");
         ETemail = findViewById<View>(R.id.et_email) as EditText
         ETpassword = findViewById<View>(R.id.et_password) as EditText

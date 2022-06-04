@@ -40,7 +40,7 @@
             android:paddingTop="16dp"
             android:text=""
             android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/reslutTicket"
@@ -51,7 +51,7 @@
             android:paddingBottom="16dp"
             android:text=""
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
 </FrameLayout>

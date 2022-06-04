@@ -207,9 +207,9 @@
 
             <Button
                 android:id="@+id/checkAuto"
-                android:layout_width="match_parent"
-                android:layout_height="67dp"
-                android:layout_centerHorizontal="true"
+                android:layout_width="310dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginEnd="20dp"
@@ -217,27 +217,29 @@
                 android:background="@drawable/button_main"
                 android:text="Проверка автомобиля"
                 android:textColor="@drawable/text_color_selector"
-                android:textSize="24sp" />
+                android:textSize="21sp" />
 
             <Button
                 android:id="@+id/checkFine"
-                android:layout_width="match_parent"
-                android:layout_height="67dp"
+                android:layout_width="310dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
                 android:layout_margin="20dp"
                 android:background="@drawable/button_main"
                 android:text="Проверка штрафов"
                 android:textColor="@drawable/text_color_selector"
-                android:textSize="24sp" />
+                android:textSize="21sp" />
 
             <Button
                 android:id="@+id/checkDriver"
-                android:layout_width="match_parent"
-                android:layout_height="67dp"
+                android:layout_width="310dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
                 android:layout_margin="20dp"
                 android:background="@drawable/button_main"
                 android:text="Проверка водителя"
                 android:textColor="@drawable/text_color_selector"
-                android:textSize="24sp" />
+                android:textSize="21sp" />
 
 
         </LinearLayout>
